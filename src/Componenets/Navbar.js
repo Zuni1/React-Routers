@@ -72,5 +72,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-//   yaaaahhhooooo
