@@ -1,5 +1,7 @@
 import React from 'react'
 import {useParams, Link} from 'react-router-dom';
+import Box from '@mui/material/Box';
+
 import data from './Data'
 
 const ProductPage = () => {
@@ -8,14 +10,22 @@ const ProductPage = () => {
     const search = data.find(search => search.id === productId)
     const {name, image} = search;
 
+    const style = {
+      box: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '10px',
+      },
+    }
+
   return (
-      <div>
-        <h3>Product Description Page</h3>
-        <img src={image} width='200px'/>
-        <h4>{name}</h4>
+      <Box sx={style.box}>
+        <h1>Product Description Page</h1>
+        <img src={image} width='400px' />
+        <h3>{name}</h3>
       <Link to='/protectedproduct'>Go Back</Link>
-      {/* <Link to='/product'>Go Back</Link> */}
-    </div>
+    </Box>
   )
 }
 

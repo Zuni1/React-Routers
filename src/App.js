@@ -3,7 +3,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import './App.css';
 import Screen from './Componenets/Screen';
-import Protected from './Componenets/Protected';
 import Home from './Componenets/Home';
 import About from './Componenets/About';
 import ProtectedProduct from './Componenets/ProtectedProduct';
@@ -21,7 +20,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Screen/>}>
 
-        <Route index element={<Home setUser={setUser}/>} />
+        <Route index element={<Home />} />
         <Route path='/about' element={<About/>} />
 
         <Route element={<ProtectedRoute user={user} />}>
@@ -31,16 +30,16 @@ function App() {
           </Route>
         </Route>
 
-        {/* <Route path='dashboard' 
+        <Route path='/login' element={<Login setUser={setUser} />} />
+
+        <Route path='dashboard' 
           element={
             <ProtectedRoute user={user}>
-            <Dashboard user={user} setUser={setUser}/>
+              <Dashboard user={user} setUser={setUser}/>
             </ProtectedRoute>
-          } /> */}
-        <Route path='login' element={<Login setUser={setUser} />} />
-        <Route path='dashboard' element={<Dashboard user={user}/>} />
-        <Route path='*' element={<Error/>} />
+        } />
 
+        <Route path='*' element={<Error/>} />
       </Route>
     </Routes>
   </BrowserRouter>

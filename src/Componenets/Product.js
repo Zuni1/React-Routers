@@ -1,22 +1,43 @@
-import React from 'react';
-import data from './Data';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+
+import data from "./Data";
 
 const Product = () => {
-  return (
-    <div>
-      {data.map(obj => {
-        return (
-          <div key={obj.id}>
-            <img src={obj.image} width='200px'/>
-            <h4>{obj.name}</h4>
-            <Link to={`/protectedproduct/${obj.id}`}>Go to Details</Link>
-            {/* <Link to={`/product/${obj.id}`}>Go to Details</Link> */}
-          </div>
-        )
-      })}
-    </div>
-  )
-}
+  const style = {
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    boxItems: {
+      padding: "30px",
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  };
 
-export default Product
+  return (
+    <Box sx={style.container}>
+      <h1>Product page</h1>
+      <Grid container>
+        {data.map((obj) => {
+          return (
+            <Box item xs={6} sx={style.boxItems}>
+              <img src={obj.image} width="200px" />
+              <h4>{obj.name}</h4>
+              <Link to={`/protectedproduct/${obj.id}`}>Go to Details</Link>
+            </Box>
+          );
+        })}
+      </Grid>
+    </Box>
+  );
+};
+
+export default Product;

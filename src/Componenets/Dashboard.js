@@ -1,21 +1,21 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import Box from '@mui/material/Box';
 
-const Dashboard = ({user, setUser}) => {
+const Dashboard = ({user}) => {
 
-  const navigate = useNavigate()
-
-  // const logout = () => {
-  //   setUser(null)
-  //   navigate('/')
-  // }
+  const style = {
+    box: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  }
 
   return (
-    <div>
-      <h2>{user.email}'s Dashboard</h2>
-      <h3>Hello {user.email}</h3>
-      {/* <button onClick={logout}>Logout</button> */}
-    </div>
+    <Box sx={style.box}>
+      <h1>User Dashboard</h1>
+      <h3>Hello, {user.email}</h3>
+    </Box>
   )
 }
 

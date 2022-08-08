@@ -1,17 +1,21 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 
-const Home = ({setUser}) => {
-  
-  // const logout = () => {
-  //   setUser({name: null, email: null})
-  //   localStorage.setItem('name', '')
-  // }
+const Home = () => {
+
+  const style = {
+    box: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  }
 
   return (
-    <div>
-      <h1>Home page</h1>
-      {/* <button onClick={logout}>Logout</button> */}
-    </div>
+    <Box sx={style.box}>
+      <h1>Home Page</h1>
+    </Box>
   )
 }
 
