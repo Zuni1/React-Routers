@@ -16,7 +16,7 @@ const Navbar = () => {
     },
   }
 
-  const [value, setValue] = React.useState('one');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -30,15 +30,12 @@ function App() {
           </Route>
         </Route>
 
+        <Route element={<ProtectedRoute user={user} />}>
+          <Route path='/dashboard' element={<Dashboard user={user}/>} />
+        </Route>
+
         <Route path='/login' element={<Login setUser={setUser} />} />
-
-        <Route path='dashboard' 
-          element={
-            <ProtectedRoute user={user}>
-              <Dashboard user={user} setUser={setUser}/>
-            </ProtectedRoute>
-        } />
-
+        
         <Route path='*' element={<Error/>} />
       </Route>
     </Routes>
