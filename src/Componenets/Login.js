@@ -1,19 +1,16 @@
 import * as React from 'react';
-import {useState} from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+import {Link, useNavigate} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import Button from '@mui/material/Button';
-import {Link, useNavigate} from 'react-router-dom'
 
 const Login = ({setUser}) => {
 
-  const [email, setEmail] = useState('');
-  const [pswd, setPswd] = useState('');
-  
   const navigate = useNavigate()
+  const {register, handleSubmit, formState: {errors}} = useForm()
   
     // React.useEffect(() => {
     //   const login = localStorage.getItem('login')
@@ -21,18 +18,6 @@ const Login = ({setUser}) => {
     //     navigate('/')
     //   }
     // })
-
-    const handleSubmit = () => {
-      if(email && pswd){
-        setUser({email: email, pswd: pswd})
-  
-        localStorage.setItem('email', email)
-        navigate('/dashboard')
-      }
-      else{
-        alert('Invalid!')
-      }
-    };
 
     const style = {
       box: {
@@ -59,22 +44,31 @@ const Login = ({setUser}) => {
         padding: '20px',
         display: 'flex',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        justifyContent: 'center'
+      },
+      form: {
+        alignItems: 'center',
+        display: 'flex', 
+        flexDirection: 'column', 
+        width: '100%'
       },
       input: {
-        padding: '10px', 
-        borderRadius: '15px',
+        padding: '12px', 
+        borderRadius: 20,
         backgroundColor: '#f6fafd',
-        border: '2px solid #f0f0f0'
-      },
-      inputs: {
-        borderRadius: 10,
-        backgroundColor: '#f6fafd',
+        border: '2px solid #f0f0f0',
+        width: '80%',
+        margin: '10px'
       },
       btn: {
         borderRadius: 10,
+        border: 0,
+        color: 'white',
+        padding: '8px',
         width: '100%',
         backgroundColor: '#0569c1',
+        margin: '10px'
       },
     }  
 
@@ -93,37 +87,50 @@ const Login = ({setUser}) => {
               Log In
             </Typography><br/>
           
-            <TextField 
-              label="User Email" 
-              variant="outlined" 
-              sx={style.inputs}
-              required
-              id='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} 
-            /><br/>
+            <form 
+              style={style.form} 
+              onSubmit={handleSubmit((data) => 
+                {
+                  setUser({email: data.email})
+                  navigate('/dashboard')
+                }
+              )}>
+              <input 
+                style={style.input} 
+                placeholder='User Email' 
+                {...register('email', 
+                    {
+                        required: <span style={{color: 'red'}}>This is a required field</span>, 
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: <span style={{color: 'red'}}>Invalid email address</span>
+                        }
+                    } 
+                )} 
+              />
+              {errors.email?.message}
 
-            <TextField 
-              label="User Password" 
-              variant="outlined" 
-              sx={style.inputs} 
-              required
-              type="password"
-              id='pswd'
-              value={pswd}
-              onChange={(e) => setPswd(e.target.value)}
-            /><br/>
+              <input 
+                style={style.input} 
+                type='password'
+                placeholder='User Password' 
+                {...register(
+                  'password', 
+                  {required: <span style={{color: 'red'}}>This is a required Field</span>,
+                  minLength: {value: 6, message: <span style={{color: 'red'}}>Password must be 6 characters</span>}} 
+                )} 
+              />
+              {errors.password?.message}
 
-            <Button variant="contained" onClick={handleSubmit} sx={style.btn}>Log In</Button><br/><br/>
+              <Button type='submit' variant="contained" sx={style.btn}>Log In</Button>
+            </form><br/>
 
             <Typography variant="subtitle2" sx={{color: '#9a9590'}}>
-              Don't have an account? <Link to='/'>Register</Link>
-            </Typography><br/>
+              Don't have an account? <Link to='/register'>Register</Link>
+            </Typography>
 
-            {/* <input placeholder="User Email" style={style.input}/><br/>
-            <input placeholder="User Password" style={style.input}/> */}
           </Grid>
-          <Grid item xs={6}sx={style.gridRight}>
+          <Grid item xs={6}>
             <img src='../../login.jpg' style={{width: '100%', height: '100%'}}/>
           </Grid>
         </Grid>
@@ -133,36 +140,6 @@ const Login = ({setUser}) => {
         </Typography>
     </Paper>
     </Box>
-    // <div>
-    //   <form onSubmit={handleSubmit}>
-    //     <h4>Login Form</h4>
-    //     <div>
-    //       <label htmlFor='name'>
-    //         name
-    //       </label>
-    //       <input
-    //         type='text'
-    //         id='name'
-    //         value={name}
-    //         onChange={(e) => setName(e.target.value)}
-    //       />
-    //     </div>
-    //     <div>
-    //       <label htmlFor='email'>
-    //         email
-    //       </label>
-    //       <input
-    //         type='email'
-    //         id='email'
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //       />
-    //     </div>
-    //     <button type='submit'>
-    //       login
-    //     </button>
-    //   </form>
-    // </div>
   )
 }
 

@@ -8,6 +8,7 @@ import About from './Componenets/About';
 import ProtectedProduct from './Componenets/ProtectedProduct';
 import Product from './Componenets/Product';
 import ProductPage from './Componenets/ProductPage';
+import Register from './Componenets/Register';
 import Login from './Componenets/Login';
 import ProtectedRoute from './Componenets/ProtectedRoute';
 import Dashboard from './Componenets/Dashboard';
@@ -34,6 +35,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard user={user}/>} />
         </Route>
 
+        <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login setUser={setUser} />} />
         
         <Route path='*' element={<Error/>} />

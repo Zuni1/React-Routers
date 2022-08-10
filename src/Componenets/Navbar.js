@@ -63,7 +63,7 @@ const Navbar = () => {
         textColor='primary'
       >
         <Tab value="five" sx={{color: 'white'}} component={Link} to='/login' label="Log In" />
-        <Tab value="six" sx={{color: 'white'}} component={Link} to='/login' label="Register" />
+        <Tab value="six" sx={{color: 'white'}} component={Link} to='/register' label="Register" />
       </Tabs>
       </ThemeProvider>
     </Box>

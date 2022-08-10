@@ -14,7 +14,7 @@ const Dashboard = ({user}) => {
   return (
     <Box sx={style.box}>
       <h1>User Dashboard</h1>
-      <h3>Hello, {user.email}</h3>
+      <h3>Hello, {user?.email}</h3>
     </Box>
   )
 }
