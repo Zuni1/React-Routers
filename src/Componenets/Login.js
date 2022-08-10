@@ -47,12 +47,6 @@ const Login = ({setUser}) => {
         flexDirection: 'column',
         justifyContent: 'center'
       },
-      form: {
-        alignItems: 'center',
-        display: 'flex', 
-        flexDirection: 'column', 
-        width: '100%'
-      },
       input: {
         padding: '12px', 
         borderRadius: 20,
@@ -60,6 +54,12 @@ const Login = ({setUser}) => {
         border: '2px solid #f0f0f0',
         width: '80%',
         margin: '10px'
+      },
+      form: {
+        alignItems: 'center',
+        display: 'flex', 
+        flexDirection: 'column', 
+        width: '100%'
       },
       btn: {
         borderRadius: 10,
