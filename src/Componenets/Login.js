@@ -7,10 +7,15 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import Button from '@mui/material/Button';
 
-const Login = ({setUser}) => {
+import { useDispatch } from "react-redux";
+import { login } from './toolkit/Reducer';
+
+const Login = ({user, setUser}) => {
 
   const navigate = useNavigate()
   const {register, handleSubmit, formState: {errors}} = useForm()
+
+  const dispatch = useDispatch()
   
     // React.useEffect(() => {
     //   const login = localStorage.getItem('login')
@@ -92,6 +97,11 @@ const Login = ({setUser}) => {
               onSubmit={handleSubmit((data) => 
                 {
                   setUser({email: data.email})
+                  dispatch(login({
+                    email: data.email,
+                    password: data.password,
+                    
+                  }))
                   navigate('/dashboard')
                 }
               )}>

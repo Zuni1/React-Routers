@@ -15,7 +15,9 @@ import Dashboard from './Componenets/Dashboard';
 import Error from './Componenets/Error';
 
 function App() {
+
   const [user, setUser] = React.useState("")
+
   return (
     <BrowserRouter>
     <Routes>
@@ -32,11 +34,11 @@ function App() {
         </Route>
 
         <Route element={<ProtectedRoute user={user} />}>
-          <Route path='/dashboard' element={<Dashboard user={user}/>} />
+          <Route path='/dashboard' element={<Dashboard setUser={setUser}/>} />
         </Route>
 
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login setUser={setUser} />} />
+        <Route path='/login' element={<Login user={user} setUser={setUser} />} />
         
         <Route path='*' element={<Error/>} />
       </Route>
