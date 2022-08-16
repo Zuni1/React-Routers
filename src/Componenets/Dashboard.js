@@ -15,7 +15,9 @@ const Dashboard = ({setUser}) => {
       flexDirection: 'column',
       alignItems: 'center',
     },
-  }
+  } 
+
+  ////jjsjsjjs
 
   const handleLogout = () => {
     setUser(null)
