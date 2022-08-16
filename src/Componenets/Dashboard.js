@@ -17,8 +17,6 @@ const Dashboard = ({setUser}) => {
     },
   } 
 
-  ////jjsjsjjsnnnnnnnnnnnnnn
-
   const handleLogout = () => {
     setUser(null)
     dispatch(logout())
