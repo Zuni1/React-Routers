@@ -16,8 +16,6 @@ import Error from './Componenets/Error';
 
 function App() {
 
-  const [user, setUser] = React.useState("")
-
   return (
     <BrowserRouter>
     <Routes>
@@ -26,19 +24,19 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/about' element={<About/>} />
 
-        <Route element={<ProtectedRoute user={user} />}>
+        <Route element={<ProtectedRoute />}>
           <Route path='protectedproduct' element={<ProtectedProduct/>} >
             <Route index element={<Product/>} />
             <Route path=':productId' element={<ProductPage/>} />
           </Route>
         </Route>
 
-        <Route element={<ProtectedRoute user={user} />}>
-          <Route path='/dashboard' element={<Dashboard setUser={setUser}/>} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/dashboard' element={<Dashboard />} />
         </Route>
 
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login user={user} setUser={setUser} />} />
+        <Route path='/login' element={<Login  />} />
         
         <Route path='*' element={<Error/>} />
       </Route>

@@ -10,19 +10,12 @@ import Button from '@mui/material/Button';
 import { useDispatch } from "react-redux";
 import { login } from './toolkit/Reducer';
 
-const Login = ({user, setUser}) => {
+const Login = () => {
 
   const navigate = useNavigate()
   const {register, handleSubmit, formState: {errors}} = useForm()
 
   const dispatch = useDispatch()
-  
-    // React.useEffect(() => {
-    //   const login = localStorage.getItem('login')
-    //   if(!login){
-    //     navigate('/')
-    //   }
-    // })
 
     const style = {
       box: {
@@ -96,11 +89,10 @@ const Login = ({user, setUser}) => {
               style={style.form} 
               onSubmit={handleSubmit((data) => 
                 {
-                  setUser({email: data.email})
                   dispatch(login({
+                    loggedIn: true,
                     email: data.email,
-                    password: data.password,
-                    
+                    password: data.password
                   }))
                   navigate('/dashboard')
                 }
@@ -141,7 +133,7 @@ const Login = ({user, setUser}) => {
 
           </Grid>
           <Grid item xs={6}>
-            <img src='../../login.jpg' style={{width: '100%', height: '100%'}}/>
+            <img src='../../login.jpg' alt='' style={{width: '100%', height: '100%'}}/>
           </Grid>
         </Grid>
 

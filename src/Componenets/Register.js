@@ -126,6 +126,7 @@ const Register = () => {
             <Grid item xs={6}>
                 <img
                     src="../../signup.jpg"
+                    alt = ''
                     style={{ width: "100%", height: "100%" }}
                 />
             </Grid>

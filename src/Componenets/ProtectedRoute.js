@@ -1,23 +1,13 @@
 import React from 'react';
-import {Navigate, Outlet, useNavigate} from 'react-router-dom'
+import {Outlet, Navigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const ProtectedRoute = ({user}) => {
-    // const navigate = useNavigate()
+const ProtectedRoute = () => {
 
-    // React.useEffect(() => {
-    //     const login = localStorage.getItem('name')
-    //     if(login){
-    //         navigate('/login')
-    //     }
-    // })
-
-    // if(!user){
-    //     return <Navigate to='/login' />
-    // }
+    const token = useSelector(state => state.user.user)
 
     return (
-        // <Outlet/>
-        !user ? <Navigate to='/login' /> : <Outlet/>
+        token ?  <Outlet/> : <Navigate to={'login'} />
     )
 
 }

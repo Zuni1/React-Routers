@@ -4,10 +4,10 @@ import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from './toolkit/Reducer';
 
-const Dashboard = ({setUser}) => {
+const Dashboard = () => {
 
   const dispatch = useDispatch()
-  const obj = useSelector(state => state.user.user.email)
+  const obj = useSelector(state => state.user.user)
 
   const style = {
     box: {
@@ -18,14 +18,13 @@ const Dashboard = ({setUser}) => {
   } 
 
   const handleLogout = () => {
-    setUser(null)
     dispatch(logout())
   }
 
   return (
     <Box sx={style.box}>
       <h1>User Dashboard</h1>
-      <h3>Hello, {obj}</h3>
+      <h3>Hello, {obj.email}</h3>
       <Button variant="contained" onClick={() => handleLogout()}>Logout</Button>
     </Box>
   )
