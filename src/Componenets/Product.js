@@ -28,7 +28,7 @@ const Product = () => {
       <Grid container>
         {data.map((obj) => {
           return (
-            <Box item xs={6} sx={style.boxItems}>
+            <Box key={obj.id} item xs={6} sx={style.boxItems}>
               <img src={obj.image} width="200px" />
               <h4>{obj.name}</h4>
               <Link to={`/protectedproduct/${obj.id}`}>Go to Details</Link>

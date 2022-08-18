@@ -15,7 +15,6 @@ const Navbar = () => {
       display: 'flex',
       backgroundColor: '#3295a8',
       padding: '15px',
-      justifyContent: 'space-between'
     },
   }
 
@@ -45,19 +44,9 @@ const Navbar = () => {
         <Tab sx={{color: 'white'}} label="About" value="/about" to='/about' component={Link} />
         <Tab sx={{color: 'white'}} label="Products" value="/protectedproduct" to='/protectedproduct' component={Link} />
         <Tab sx={{color: 'white'}} label="Dashboard" value="/dashboard" to='/dashboard' component={Link} />
-      </Tabs>
-
-      <Tabs
-        value={currentTab}
-        TabIndicatorProps={{
-          style: {
-            backgroundColor: "#D97D54",
-          }
-        }}
-        textColor='primary'
-      >
         <Tab sx={{color: 'white'}} label="Log In" value="/login" to='/login' component={Link} />
         <Tab sx={{color: 'white'}} label="Register" value="/register" to='/register' component={Link} />
+      
       </Tabs>
       </ThemeProvider>
     </Box>
